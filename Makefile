@@ -76,8 +76,8 @@ oldinstall:
 release:
 	@echo "building release ${OWNER} ${BIN_NAME} ${VERSION}"
 	@echo "GOPATH=${GOPATH}"
-	godep get && \
-	 CGO_ENABLED=0 GOOS=linux GOARCH=amd64 godeps go build -a -tags netgo -ldflags '-w' -o release/ivy ivy/main.go
+	@godep get
+	@CGO_ENABLED=0 GOOS=linux GOARCH=amd64 GOPATH=`godep path`:$GOPATH go build -a -tags netgo -ldflags '-w' -o release/ivy ivy/main.go
 
 old:
 	#CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -a -tags netgo -ldflags '-w' -o dist/run main.go
