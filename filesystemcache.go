@@ -3,6 +3,7 @@ package ivy
 import (
 	"bytes"
 	"fmt"
+	"log"
 	"os"
 	"path"
 	"path/filepath"
@@ -26,6 +27,7 @@ func NewFileSystemCache(root string) *FileSystemCache {
 func (fs *FileSystemCache) Save(bucket, filename string, params *Params, data []byte) error {
 	dir, filePath := filepath.Split(filename)
 	filename = path.Join(fs.root, bucket, dir, params.String()+filePath)
+	log.Printf("Ivy] Save %s ", filename)
 	dir = path.Join(fs.root, bucket, dir)
 
 	_, err := os.Open(dir)
@@ -50,7 +52,7 @@ func (fs *FileSystemCache) Save(bucket, filename string, params *Params, data []
 func (fs *FileSystemCache) Load(bucket, filename string, params *Params) (*bytes.Buffer, error) {
 	dir, filePath := filepath.Split(filename)
 	filename = path.Join(fs.root, bucket, dir, params.String()+filePath)
-
+	log.Printf("Ivy] Load %s ", filename)
 	file, err := os.Open(filename)
 	if os.IsNotExist(err) {
 		return nil, ErrNotFound
