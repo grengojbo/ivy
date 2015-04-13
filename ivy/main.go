@@ -1,14 +1,15 @@
 package main
 
 import (
-	"github.com/bradhe/stopwatch"
-	"github.com/codegangsta/cli"
-	"github.com/plimble/ace"
-	"github.com/plimble/ivy"
 	"log"
 	"net/url"
 	"os"
 	"runtime"
+
+	"github.com/bradhe/stopwatch"
+	"github.com/codegangsta/cli"
+	"github.com/grengojbo/ivy"
+	"github.com/plimble/ace"
 )
 
 func main() {
@@ -18,7 +19,7 @@ func main() {
 	app.Usage = "Assets & Image processing on the fly"
 	app.Author = "Witoo Harianto"
 	app.Email = "witooh@icloud.com"
-	app.Version = "1.0"
+	app.Version = "1.0.0"
 	app.Flags = []cli.Flag{
 		cli.StringFlag{
 			Name:  "url,u",
@@ -79,6 +80,10 @@ func main() {
 			cache = ivy.NewFileSystemCache("cacheroot")
 		default:
 			cache = nil
+		}
+
+		if len(c.String("cacheroot")) > 0 {
+			cache = ivy.NewFileSystemCache(c.String("cacheroot"))
 		}
 
 		iv := ivy.New(source, cache, ivy.NewGMProcessor(), &ivy.Config{

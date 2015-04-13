@@ -1,0 +1,50 @@
+{
+	"ImportPath": "github.com/grengojbo/ivy",
+	"GoVersion": "go1.4.2",
+	"Deps": [
+		{
+			"ImportPath": "github.com/awslabs/aws-sdk-go/aws",
+			"Rev": "c855e4e534032cb24ba6fbfd42b323305de58199"
+		},
+		{
+			"ImportPath": "github.com/awslabs/aws-sdk-go/internal/endpoints",
+			"Rev": "c855e4e534032cb24ba6fbfd42b323305de58199"
+		},
+		{
+			"ImportPath": "github.com/awslabs/aws-sdk-go/internal/protocol/query",
+			"Rev": "c855e4e534032cb24ba6fbfd42b323305de58199"
+		},
+		{
+			"ImportPath": "github.com/awslabs/aws-sdk-go/internal/protocol/rest",
+			"Rev": "c855e4e534032cb24ba6fbfd42b323305de58199"
+		},
+		{
+			"ImportPath": "github.com/awslabs/aws-sdk-go/internal/protocol/restxml",
+			"Rev": "c855e4e534032cb24ba6fbfd42b323305de58199"
+		},
+		{
+			"ImportPath": "github.com/awslabs/aws-sdk-go/internal/protocol/xml/xmlutil",
+			"Rev": "c855e4e534032cb24ba6fbfd42b323305de58199"
+		},
+		{
+			"ImportPath": "github.com/awslabs/aws-sdk-go/internal/signer/v4",
+			"Rev": "c855e4e534032cb24ba6fbfd42b323305de58199"
+		},
+		{
+			"ImportPath": "github.com/awslabs/aws-sdk-go/service/s3",
+			"Rev": "c855e4e534032cb24ba6fbfd42b323305de58199"
+		},
+		{
+			"ImportPath": "github.com/plimble/utils/errors2",
+			"Rev": "1b2d85e472f08917a03006bb9f4627b23efea171"
+		},
+		{
+			"ImportPath": "github.com/stretchr/testify/assert",
+			"Rev": "e4ec8152c15fc46bd5056ce65997a07c7d415325"
+		},
+		{
+			"ImportPath": "github.com/vaughan0/go-ini",
+			"Rev": "a98ad7ee00ec53921f08832bc06ecf7fd600e6a1"
+		}
+	]
+}

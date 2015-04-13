@@ -8,7 +8,7 @@ SITE="img.uatv.me"
 
 
 # Program version
-VERSION := $(shell grep "const Version " version.go | sed -E 's/.*"(.+)"$$/\1/')
+VERSION := $(shell grep "const Version " ivy/version.go | sed -E 's/.*"(.+)"$$/\1/')
 
 # Binary name for bintray
 BIN_NAME=$(shell basename $(abspath ./))
@@ -56,6 +56,8 @@ save:
 
 install:
 	go get -v -u
+	go get -v -u github.com/bradhe/stopwatch
+	go get -v -u github.com/plimble/ace
 	go get -v -u github.com/stretchr/testify
 
 oldinstall:
@@ -75,7 +77,7 @@ release:
 	@echo "building release ${OWNER} ${BIN_NAME} ${VERSION}"
 	@echo "GOPATH=${GOPATH}"
 	godep get && \
-	 CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -a -tags netgo -ldflags '-w' -o dist/run main.go
+	 CGO_ENABLED=0 GOOS=linux GOARCH=amd64 godeps go build -a -tags netgo -ldflags '-w' -o release/ivy ivy/main.go
 
 old:
 	#CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -a -tags netgo -ldflags '-w' -o dist/run main.go
@@ -85,7 +87,7 @@ old:
 
 build: clean
 	@echo "building ${OWNER} ${BIN_NAME} ${VERSION}"
-	@CGO_ENABLED=0 GOOS=darwin GOARCH=amd64 go build -a -tags netgo -ldflags '-w' -o run main.go
+	@CGO_ENABLED=0 GOOS=darwin GOARCH=amd64 go build -a -tags netgo -ldflags '-w' -o ivy ivy/main.go
 
 clean:
 	@test ! -e ./${BIN_NAME} || rm ./${BIN_NAME}
@@ -126,4 +128,4 @@ swagger:
 # 	docker push $(account)/$(tag)
 # The entire Docker configuration is solely concerned with point
 
-.PHONY: build dist clean test release run install docs swagger create push destroy
+.PHONY: build dist clean test release run install docs swagger create push destroy save
