@@ -1,10 +1,10 @@
 ACCOUNT="grengojbo"
 TAG="1.4.0"
-NAME="passageapi"
-PUBLIC_PORT=8080
+NAME="ivy"
+PUBLIC_PORT=4900
 PORT=${PUBLIC_PORT}
 IMAGE_NAME = "${ACCOUNT}/${NAME}"
-SITE="site.uatv.me"
+SITE="img.uatv.me"
 
 
 # Program version
@@ -55,6 +55,10 @@ save:
 	godep save
 
 install:
+	go get -v -u
+	go get -v -u github.com/stretchr/testify
+
+oldinstall:
 	# go get -v  -u github.com/astaxie/beego
 	# go get -v -u github.com/beego/bee
 	go get -v -u github.com/astaxie/beego/orm
